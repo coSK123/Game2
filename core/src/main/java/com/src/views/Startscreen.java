@@ -62,7 +62,7 @@ public class Startscreen implements Screen {
             if (clickPos.x > 200 && clickPos.x < 200 + 100) {
                 if (clickPos.y > 100 && clickPos.y < 100 + 300) {
                     this.character = new Warrior();
-                    System.out.println(character.attack());
+                    System.out.println(character.attack()+1);
 
                 }
             }
