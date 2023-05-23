@@ -15,8 +15,9 @@ public class Warrior extends Character{
         this.money = 5;
         this.offHand = null;
     }
+
+    @Override
     public int attack(){
-        System.out.println(strength/4+ mainHand.getDamage());
         return strength/4+ mainHand.getDamage();
     }
 }

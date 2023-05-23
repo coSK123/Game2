@@ -49,7 +49,7 @@ public class PlayerSelectionScreen implements Screen {
             if (clickPos.x > 50 && clickPos.x < 50 + 50) {
                 if (clickPos.y > 50 && clickPos.y < 50 + 50) {
                     System.out.println("click");
-                    game.setScreen(new Startscreen(game, "Warrior"));
+                    game.setScreen(new Startscreen(game));
 
                 }
             }

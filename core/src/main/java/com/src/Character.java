@@ -13,4 +13,7 @@ public abstract class Character {
     protected Weapon mainHand;
     protected Weapon offHand;
 
+    public int attack(){
+        return 1;
+    }
 }
