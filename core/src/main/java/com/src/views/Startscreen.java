@@ -56,6 +56,7 @@ public class Startscreen implements Screen {
         batch.begin();
         font.draw(batch, "Warrior", 220, 290);
         batch.end();
+
         if (Gdx.input.isTouched()) {
             clickPos.set(Gdx.input.getX(), Gdx.input.getY(), 0); //when the screen is touched, the coordinates are inserted into the vector
             camera.unproject(clickPos); // calibrates the input to your camera's dimentions

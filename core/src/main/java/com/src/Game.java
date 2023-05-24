@@ -3,6 +3,7 @@ package com.src;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.src.views.PlayerSelectionScreen;
+import com.src.views.Testview;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Game extends com.badlogic.gdx.Game  {
@@ -13,7 +14,7 @@ public class Game extends com.badlogic.gdx.Game  {
     public void create () {
         batch = new SpriteBatch();
         font = new BitmapFont(); // use libGDX's default Arial font
-        this.setScreen(new PlayerSelectionScreen(this));
+        this.setScreen(new Testview(this));
     }
 
     @Override
