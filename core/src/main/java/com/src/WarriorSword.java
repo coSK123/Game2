@@ -2,9 +2,16 @@ package com.src;
 
 public class WarriorSword extends Weapon{
     private int damage = 10;
+    private String name = "WarriorSword";
 
 
     public WarriorSword(){
+
+    }
+
+    @Override
+    public String toString() {
+        return name;
 
     }
 
