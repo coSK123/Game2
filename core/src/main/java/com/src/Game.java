@@ -9,13 +9,11 @@ import com.src.views.Startscreen;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Game extends com.badlogic.gdx.Game  {
-    public SpriteBatch batch;
-    public BitmapFont font;
+
 
     @Override
     public void create () {
-        batch = new SpriteBatch();
-        font = new BitmapFont(); // use libGDX's default Arial font
+
         this.setScreen(new Startscreen(this));
     }
 
@@ -27,7 +25,5 @@ public class Game extends com.badlogic.gdx.Game  {
 
     @Override
     public void dispose () {
-        batch.dispose();
-        font.dispose();
     }
 }
