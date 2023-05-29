@@ -31,8 +31,8 @@ public class Hunter extends Character implements CharacterMethods{
             "offHand=" + offHand;
     }
     @Override
-    public int attack() {
-        return dexterity/4+ mainHand.getDamage();
+    public void attack(Character character) {
+         character.setHealth(character.getHealth()-(dexterity/4+ mainHand.getDamage()));
     }
 
     @Override

@@ -51,6 +51,7 @@ public class PlayerSelectionScreen implements Screen {
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
                 System.out.println("Created a Warrior");
                 warriorLabel.setText("Press a Button");
+                game.setScreen(new FightScreen(game, new Warrior()));
             }
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button){
                 System.out.println("YOlo");
@@ -70,6 +71,7 @@ public class PlayerSelectionScreen implements Screen {
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
                 System.out.println("Created a Warrior");
                 hunterLabel.setText("Press a Button");
+                game.setScreen(new FightScreen(game, new Hunter()));
             }
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button){
                 System.out.println("YOlo");
@@ -89,6 +91,7 @@ public class PlayerSelectionScreen implements Screen {
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
                 System.out.println("Created a Warrior");
                 thiefLabel.setText("Press a Button");
+                game.setScreen(new FightScreen(game, new Thief()));
             }
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button){
                 System.out.println("YOlo");

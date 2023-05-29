@@ -32,8 +32,8 @@ public class Warrior extends Character implements CharacterMethods {
     }
 
     @Override
-    public int attack(){
-        return strength/4+ mainHand.getDamage();
+    public void attack(Character character) {
+        character.setHealth(character.getHealth()-( strength/4+ mainHand.getDamage()));
     }
 
     @Override

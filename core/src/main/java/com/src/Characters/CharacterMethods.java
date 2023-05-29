@@ -1,7 +1,9 @@
 package com.src.Characters;
 
 public interface CharacterMethods {
-     int attack();
+     void attack(Character character);
      int defend();
      boolean evade();
+
+
 }

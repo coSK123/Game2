@@ -15,7 +15,15 @@ public abstract class Character {
     protected Weapon mainHand;
     protected Weapon offHand;
 
-    public int attack(){
-        return 1;
+    public void attack(Character character){
+
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 }

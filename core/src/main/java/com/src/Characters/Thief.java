@@ -31,8 +31,8 @@ public class Thief extends Character implements CharacterMethods{
             "offHand=" + offHand;
     }
     @Override
-    public int attack() {
-        return dexterity/2+ mainHand.getDamage();
+    public void attack(Character character) {
+        character.setHealth(character.getHealth()-(dexterity/2+ mainHand.getDamage()));
     }
 
     @Override
