@@ -1,6 +1,6 @@
-package com.src;
+package com.src.Weapons;
 
-public class WarriorSword extends Weapon{
+public class WarriorSword extends Weapon {
     private int damage = 10;
     private String name = "WarriorSword";
 

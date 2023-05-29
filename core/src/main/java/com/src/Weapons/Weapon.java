@@ -1,4 +1,4 @@
-package com.src;
+package com.src.Weapons;
 
 public abstract class Weapon {
     protected int damage;

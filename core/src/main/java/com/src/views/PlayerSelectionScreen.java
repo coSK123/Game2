@@ -13,7 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.src.Warrior;
+import com.src.Characters.Hunter;
+import com.src.Characters.Thief;
+import com.src.Characters.Warrior;
 
 public class PlayerSelectionScreen implements Screen {
     final Game game;
@@ -21,7 +23,10 @@ public class PlayerSelectionScreen implements Screen {
 
     Stage stage;
     Skin crispy;
-    Label outputLabel;
+    Label warriorLabel;
+    Label hunterLabel;
+
+    Label thiefLabel;
     public PlayerSelectionScreen(final Game game) {
         this.game = game;
 
@@ -36,24 +41,62 @@ public class PlayerSelectionScreen implements Screen {
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
         crispy = new Skin(Gdx.files.internal("clean-crispy-ui.json"));
-        outputLabel = new Label("Warrior", crispy);
+        warriorLabel = new Label("Warrior", crispy);
         TextButton warriorButton = new TextButton(new Warrior().toString(),crispy);
         warriorButton.getLabel().setAlignment(1, Align.left);
-        warriorButton.setSize((float) Gdx.graphics.getWidth() /3 -50,Gdx.graphics.getHeight()-100);
-        warriorButton.setPosition( 10, 10);
+        warriorButton.setSize((float) Gdx.graphics.getWidth() /3 -50,Gdx.graphics.getHeight()-10);
+        warriorButton.setPosition( 35, 10);
         warriorButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
                 System.out.println("Created a Warrior");
-                outputLabel.setText("Press a Button");
+                warriorLabel.setText("Press a Button");
             }
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button){
                 System.out.println("YOlo");
-                outputLabel.setText("Yolo");
+                warriorLabel.setText("Yolo");
                 return true;
             }
         });
         stage.addActor(warriorButton);
+
+        hunterLabel = new Label("Hunter", crispy);
+        TextButton hunterButton = new TextButton(new Hunter().toString(),crispy);
+        hunterButton.getLabel().setAlignment(1, Align.left);
+        hunterButton.setSize((float) Gdx.graphics.getWidth() /3 -50,Gdx.graphics.getHeight()-10);
+        hunterButton.setPosition( ((float) Gdx.graphics.getWidth() /3 -50)+70, 10);
+        hunterButton.addListener(new InputListener(){
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                System.out.println("Created a Warrior");
+                hunterLabel.setText("Press a Button");
+            }
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button){
+                System.out.println("YOlo");
+                hunterLabel.setText("Yolo");
+                return true;
+            }
+        });
+        stage.addActor(hunterButton);
+
+        thiefLabel = new Label("Hunter", crispy);
+        TextButton thiefButton = new TextButton(new Thief().toString(),crispy);
+        thiefButton.getLabel().setAlignment(1, Align.left);
+        thiefButton.setSize((float) Gdx.graphics.getWidth() /3 -50,Gdx.graphics.getHeight()-10);
+        thiefButton.setPosition( ((float) Gdx.graphics.getWidth() /3 -50)*2+105, 10);
+        thiefButton.addListener(new InputListener(){
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                System.out.println("Created a Warrior");
+                thiefLabel.setText("Press a Button");
+            }
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button){
+                System.out.println("YOlo");
+                thiefLabel.setText("Yolo");
+                return true;
+            }
+        });
+        stage.addActor(thiefButton);
     }
 
 

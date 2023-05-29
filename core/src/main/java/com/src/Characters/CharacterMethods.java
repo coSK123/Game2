@@ -1,4 +1,4 @@
-package com.src;
+package com.src.Characters;
 
 public interface CharacterMethods {
      int attack();

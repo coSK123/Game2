@@ -1,4 +1,6 @@
-package com.src;
+package com.src.Characters;
+
+import com.src.Weapons.Weapon;
 
 public abstract class Character {
     protected int health;
