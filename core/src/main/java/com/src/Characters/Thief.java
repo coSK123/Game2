@@ -1,7 +1,7 @@
 package com.src.Characters;
 
+import com.src.Characters.Enemies.Enemy;
 import com.src.Weapons.ThiefsDagger;
-import com.src.Weapons.WarriorSword;
 
 public class Thief extends Character implements CharacterMethods{
     public Thief() {
@@ -14,7 +14,7 @@ public class Thief extends Character implements CharacterMethods{
         this.ecperiencePointsTillNextLevel = 2;
         this.experiencePoints = 0;
         this.level = 1;
-        this.money = 5;
+        this.gold = 5;
         this.offHand = null;
     }
 
@@ -26,13 +26,13 @@ public class Thief extends Character implements CharacterMethods{
             "dexterity=" + dexterity +"\n"+
             "evasion=" + evasion +"\n"+
             "defence=" + defence +"\n"+
-            "money=" + money +"\n"+
+            "money=" + gold +"\n"+
             "mainHand=" + mainHand +"\n"+
             "offHand=" + offHand;
     }
     @Override
-    public void attack(Character character) {
-        character.setHealth(character.getHealth()-(dexterity/2+ mainHand.getDamage()));
+    public void attack(Enemy enemy) {
+        enemy.setHealth(enemy.getHealth()-(dexterity/2+ mainHand.getDamage()));
     }
 
     @Override

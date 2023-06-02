@@ -1,6 +1,8 @@
 package com.src.Characters;
 
+import com.src.Characters.Enemies.Enemy;
 import com.src.Weapons.WarriorSword;
+import com.src.Weapons.Weapon;
 
 public class Warrior extends Character implements CharacterMethods {
 
@@ -14,9 +16,11 @@ public class Warrior extends Character implements CharacterMethods {
         this.ecperiencePointsTillNextLevel = 2;
         this.experiencePoints = 0;
         this.level = 1;
-        this.money = 5;
+        this.gold = 5;
         this.offHand = null;
     }
+
+
 
     @Override
     public String toString() {
@@ -26,14 +30,14 @@ public class Warrior extends Character implements CharacterMethods {
             "dexterity=" + dexterity +"\n"+
             "evasion=" + evasion +"\n"+
             "defence=" + defence +"\n"+
-            "money=" + money +"\n"+
+            "money=" + gold +"\n"+
             "mainHand=" + mainHand +"\n"+
             "offHand=" + offHand;
     }
 
     @Override
-    public void attack(Character character) {
-        character.setHealth(character.getHealth()-( strength/4+ mainHand.getDamage()));
+    public void attack(Enemy enemy) {
+        enemy.setHealth(enemy.getHealth()-( strength/4+ mainHand.getDamage()));
     }
 
     @Override
@@ -47,4 +51,5 @@ public class Warrior extends Character implements CharacterMethods {
         //TODO
         return false;
     }
+
 }

@@ -5,7 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -17,29 +16,32 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.src.Characters.Character;
+import com.src.Characters.Enemies.Enemy;
 import com.src.Characters.Enemies.Skeleton;
-import com.src.Characters.Warrior;
 
 public class FightScreen implements Screen {
     final Game game;
     OrthographicCamera camera;
-    final Character character;
+    final Character player;
 
     Stage stage;
     Skin crispy;
 
     Label attackLabel;
-    Character enemie;
+    Enemy enemy;
     SpriteBatch batch;
     BitmapFont font;
     private boolean playermove = true;
+    private boolean playerWon = false;
+
+    TextButton attackButton;
 
     public FightScreen(final Game game, Character character) {
         this.game = game;
-        this.character = character;
+        this.player = character;
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1800,1000);
-        this.enemie = new Skeleton();
+        this.enemy = new Skeleton();
 
     }
     @Override
@@ -52,7 +54,7 @@ public class FightScreen implements Screen {
         crispy = new Skin(Gdx.files.internal("clean-crispy-ui.json"));
 
         attackLabel = new Label("Attack", crispy);
-        TextButton attackButton = new TextButton("Attack",crispy);
+        attackButton = new TextButton("Attack",crispy);
         attackButton.getLabel().setAlignment(1, Align.left);
         attackButton.setSize((float) Gdx.graphics.getWidth() /3 -50,30);
         attackButton.setPosition( 35, 10);
@@ -61,7 +63,7 @@ public class FightScreen implements Screen {
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
                 attackLabel.setText("Attack");
                 if(playermove){
-                    character.attack(enemie);
+                    player.attack(enemy);
                     playermove = false;
                 }
             }
@@ -73,6 +75,7 @@ public class FightScreen implements Screen {
         });
         stage.addActor(attackButton);
 
+
     }
 
     @Override
@@ -82,11 +85,26 @@ public class FightScreen implements Screen {
         stage.act();
         stage.draw();
         batch.begin();
-        font.draw(batch, "Player health"+character.getHealth(),50,50);
-        font.draw(batch, "Enemie health"+enemie.getHealth(),200,200);
+        font.draw(batch, "Player health"+ player.getHealth(),50,50);
+        font.draw(batch, "Enemie health"+ enemy.getHealth(),200,200);
         batch.end();
         if(!playermove){
             enemieMove();
+        }
+        if(player.getHealth() <= 0){
+            game.setScreen(new Startscreen(new com.src.Game()));
+        }
+        if(enemy.getHealth() <= 0 && !playerWon){
+            playerWon = true;
+            enemy.droploot(player);
+        }
+        if(playerWon){
+            batch.begin();
+            font.draw(batch, "you won", 500, 500);
+            font.draw(batch, "gold: "+ player.getGold(),400,400);
+            font.draw(batch, "exp"+ player.getExperiencePoints(),400,440);
+            batch.end();
+            attackButton.remove();
         }
     }
 
@@ -115,7 +133,7 @@ public class FightScreen implements Screen {
 
     }
     public void enemieMove(){
-        enemie.attack(character);
+        enemy.attack(player);
         playermove = !playermove;
     }
 }

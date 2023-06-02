@@ -1,10 +1,10 @@
 package com.src.Characters.Enemies;
 
 import com.src.Characters.Character;
-import com.src.Characters.CharacterMethods;
+import com.src.Characters.Loot.SkeletonLoot;
 import com.src.Weapons.WarriorSword;
 
-public class Skeleton extends Character implements CharacterMethods {
+public class Skeleton extends Enemy implements EnemieMethods {
     public Skeleton() {
         this.health = 30;
         this.mainHand = new WarriorSword();
@@ -12,8 +12,9 @@ public class Skeleton extends Character implements CharacterMethods {
         this.dexterity = 4;
         this.defence = 4;
         this.evasion = 0;
-        this.money = 5;
+        this.gold = 5;
         this.offHand = null;
+        this.loot = new SkeletonLoot();
     }
 
     @Override
@@ -29,5 +30,9 @@ public class Skeleton extends Character implements CharacterMethods {
     @Override
     public boolean evade() {
         return false;
+    }
+    @Override
+    public void droploot(Character player){
+        loot.dropLoot(player);
     }
 }
