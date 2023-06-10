@@ -1,7 +1,12 @@
 package com.src.Characters;
 
+import com.badlogic.gdx.utils.Array;
 import com.src.Characters.Enemies.Enemy;
+import com.src.Items.Item;
 import com.src.Weapons.Weapon;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Character {
     protected int health;
@@ -15,6 +20,8 @@ public abstract class Character {
     protected int ecperiencePointsTillNextLevel;
     protected Weapon mainHand;
     protected Weapon offHand;
+
+    protected List<Item> items = new ArrayList<>();
 
     public void attack(Enemy enemy){
 
@@ -90,5 +97,29 @@ public abstract class Character {
 
     public void setOffHand(Weapon offHand) {
         this.offHand = offHand;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 }
