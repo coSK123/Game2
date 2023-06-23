@@ -1,6 +1,7 @@
 package com.src.Characters.Loot;
 
 import com.src.Characters.Character;
+import com.src.Items.HealthPotion;
 
 import java.util.Random;
 
@@ -21,6 +22,8 @@ public class SkeletonLoot extends Loot implements LootMethods{
 
     @Override
     public void getSpecialLoot(Character player) {
+
+        player.setItems(new HealthPotion());
 
     }
 

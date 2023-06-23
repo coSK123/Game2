@@ -19,7 +19,7 @@ public class Skeleton extends Enemy implements EnemieMethods {
 
     @Override
     public void attack(Character character) {
-        character.setHealth(character.getHealth()-(mainHand.getDamage()-5));
+        character.setCurrrentHealth(character.getCurrrentHealth()-(mainHand.getDamage()-5));
     }
 
     @Override

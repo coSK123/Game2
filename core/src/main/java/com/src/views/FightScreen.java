@@ -85,18 +85,19 @@ public class FightScreen implements Screen {
         stage.act();
         stage.draw();
         batch.begin();
-        font.draw(batch, "Player health"+ player.getHealth(),50,50);
+        font.draw(batch, "Player health"+ player.getCurrrentHealth(),50,50);
         font.draw(batch, "Enemie health"+ enemy.getHealth(),200,200);
         batch.end();
         if(!playermove){
             enemieMove();
         }
-        if(player.getHealth() <= 0){
-            game.setScreen(new Startscreen(new com.src.Game()));
+        if(player.getCurrrentHealth() <= 0){
+            game.setScreen(new Startscreen(game));
         }
         if(enemy.getHealth() <= 0 && !playerWon){
             playerWon = true;
             enemy.droploot(player);
+
         }
         if(playerWon){
             batch.begin();
@@ -105,6 +106,7 @@ public class FightScreen implements Screen {
             font.draw(batch, "exp"+ player.getExperiencePoints(),400,440);
             batch.end();
             attackButton.remove();
+            game.setScreen(new RouteSelectionScreen(game,player));
         }
     }
 

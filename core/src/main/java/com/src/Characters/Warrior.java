@@ -2,12 +2,12 @@ package com.src.Characters;
 
 import com.src.Characters.Enemies.Enemy;
 import com.src.Weapons.WarriorSword;
-import com.src.Weapons.Weapon;
 
 public class Warrior extends Character implements CharacterMethods {
 
     public Warrior(){
-        this.health = 100;
+        this.maxHealth = 100;
+        this.currrentHealth = 100;
         this.mainHand = new WarriorSword();
         this.strength = 12;
         this.dexterity = 9;
@@ -25,7 +25,7 @@ public class Warrior extends Character implements CharacterMethods {
     @Override
     public String toString() {
         return "Warrior \n" +
-            "health=" + health + "\n"+
+            "health=" + currrentHealth + "\n"+
             "strength=" + strength +"\n"+
             "dexterity=" + dexterity +"\n"+
             "evasion=" + evasion +"\n"+

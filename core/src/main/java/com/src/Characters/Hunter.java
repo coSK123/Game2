@@ -5,7 +5,8 @@ import com.src.Weapons.HuntersBow;
 
 public class Hunter extends Character implements CharacterMethods{
     public Hunter() {
-        this.health = 100;
+        this.maxHealth = 100;
+        this.currrentHealth = 100;
         this.mainHand = new HuntersBow();
         this.strength = 12;
         this.dexterity = 9;
@@ -21,7 +22,7 @@ public class Hunter extends Character implements CharacterMethods{
     @Override
     public String toString() {
         return "Hunter \n" +
-            "health=" + health + "\n"+
+            "health=" + currrentHealth + "\n"+
             "strength=" + strength +"\n"+
             "dexterity=" + dexterity +"\n"+
             "evasion=" + evasion +"\n"+

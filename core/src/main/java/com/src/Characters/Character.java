@@ -1,15 +1,17 @@
 package com.src.Characters;
 
-import com.badlogic.gdx.utils.Array;
 import com.src.Characters.Enemies.Enemy;
 import com.src.Items.Item;
 import com.src.Weapons.Weapon;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Character {
-    protected int health;
+    protected int maxHealth;
+    protected int currrentHealth;
     protected int strength;
     protected int dexterity;
     protected int evasion;
@@ -27,12 +29,16 @@ public abstract class Character {
 
     }
 
-    public int getHealth() {
-        return health;
+    public int getMaxHealth() {
+        return maxHealth;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
+    public int getCurrrentHealth() {
+        return currrentHealth;
+    }
+
+    public void setCurrrentHealth(int currrentHealth) {
+        this.currrentHealth = currrentHealth%maxHealth;
     }
 
     public int getEvasion() {
@@ -119,7 +125,19 @@ public abstract class Character {
         return items;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setItems(Item item) {
+        boolean found = false;
+       for(int i = 0; i< items.size();i++) {
+           if (Objects.equals(items.get(i).getName(), item.getName())) {
+               items.get(i).setQuantity(items.get(i).getQuantity() + 1);
+               found = true;
+           }
+       }
+       if(!found){
+           item.setQuantity(1);
+           this.items.add(item);
+       }
+
+
     }
 }
