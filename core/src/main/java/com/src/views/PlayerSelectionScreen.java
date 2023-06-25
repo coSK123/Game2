@@ -5,14 +5,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.BaseDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.src.Animations.AnimatedDrawable;
 import com.src.Characters.Hunter;
 import com.src.Characters.Thief;
 import com.src.Characters.Warrior;
@@ -23,13 +25,18 @@ public class PlayerSelectionScreen implements Screen {
 
     Stage stage;
     Skin crispy;
+    BaseDrawable warrior;
+
     Label warriorLabel;
     Label hunterLabel;
 
     Label thiefLabel;
+    Batch batch;
+
+
     public PlayerSelectionScreen(final Game game) {
         this.game = game;
-
+        warrior = new AnimatedDrawable();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1800,1000);
 
@@ -38,14 +45,17 @@ public class PlayerSelectionScreen implements Screen {
 
     @Override
     public void show() {
+        batch = new SpriteBatch();
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
         crispy = new Skin(Gdx.files.internal("clean-crispy-ui.json"));
+
         warriorLabel = new Label("Warrior", crispy);
-        TextButton warriorButton = new TextButton(new Warrior().toString(),crispy);
-        warriorButton.getLabel().setAlignment(1, Align.left);
+        ImageButton warriorButton = new ImageButton(warrior);
+        warriorButton.setBackground(warrior);
         warriorButton.setSize((float) Gdx.graphics.getWidth() /3 -50,Gdx.graphics.getHeight()-10);
         warriorButton.setPosition( 35, 10);
+
         warriorButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
@@ -109,6 +119,7 @@ public class PlayerSelectionScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.act();
         stage.draw();
+
 
 
 

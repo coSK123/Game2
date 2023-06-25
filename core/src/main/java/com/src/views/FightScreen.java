@@ -10,11 +10,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.src.Animations.AnimatedDrawable;
 import com.src.Characters.Character;
 import com.src.Characters.Enemies.Enemy;
 import com.src.Characters.Enemies.Skeleton;
@@ -52,7 +54,10 @@ public class FightScreen implements Screen {
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
         crispy = new Skin(Gdx.files.internal("clean-crispy-ui.json"));
-
+        ImageButton button = new ImageButton(new AnimatedDrawable());
+        button.setSize(1000,1000);
+        button.setPosition(100,100);
+        stage.addActor(button);
         attackLabel = new Label("Attack", crispy);
         attackButton = new TextButton("Attack",crispy);
         attackButton.getLabel().setAlignment(1, Align.left);
