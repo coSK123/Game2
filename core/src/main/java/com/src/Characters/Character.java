@@ -38,7 +38,11 @@ public abstract class Character {
     }
 
     public void setCurrrentHealth(int currrentHealth) {
-        this.currrentHealth = currrentHealth%maxHealth;
+
+        this.currrentHealth = currrentHealth;
+        if(this.currrentHealth > maxHealth){
+            this.currrentHealth = maxHealth;
+        }
     }
 
     public int getEvasion() {

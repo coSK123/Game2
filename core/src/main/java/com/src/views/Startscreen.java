@@ -33,7 +33,7 @@ public class Startscreen implements Screen {
     public void show() {
 
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 1800,1000);
+        camera.setToOrtho(false, 1200,840);
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
         crispy = new Skin(Gdx.files.internal("clean-crispy-ui.json"));
@@ -42,7 +42,7 @@ public class Startscreen implements Screen {
         int col_width = 30;
         int row_height = 20;
         button2.setSize(col_width *4, row_height);
-        button2.setPosition((float) Gdx.graphics.getWidth() /2, (float) Gdx.graphics.getHeight()/2);
+        button2.setPosition((float) Gdx.graphics.getWidth() /2-50, (float) Gdx.graphics.getHeight()/2);
         button2.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {

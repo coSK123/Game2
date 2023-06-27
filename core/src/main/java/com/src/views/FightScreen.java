@@ -42,7 +42,7 @@ public class FightScreen implements Screen {
         this.game = game;
         this.player = character;
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 1800,1000);
+        camera.setToOrtho(false, 1200,840);
         this.enemy = new Skeleton();
 
     }

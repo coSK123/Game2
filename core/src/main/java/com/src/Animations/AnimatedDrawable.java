@@ -22,7 +22,7 @@ public class AnimatedDrawable extends BaseDrawable {
         public AnimatedDrawable(){
             charset = new TextureAtlas(Gdx.files.internal("Idle.atlas"));
             Array<TextureAtlas.AtlasRegion> frames = charset.findRegions("Idle");
-            this.animation = new Animation(.1f,frames, Animation.PlayMode.LOOP);
+            this.animation = new Animation(.7f,frames, Animation.PlayMode.LOOP);
             TextureRegion key = frames.first();
 
             this.setLeftWidth(key.getRegionWidth());
@@ -40,7 +40,7 @@ public class AnimatedDrawable extends BaseDrawable {
             stateTime += Gdx.graphics.getDeltaTime();
             currentFrame = (TextureRegion) animation.getKeyFrame(stateTime, true);
 
-            batch.draw(currentFrame, x,y, 640, 320);
+            batch.draw(currentFrame, x,y, 320, 160);
         }
     }
 

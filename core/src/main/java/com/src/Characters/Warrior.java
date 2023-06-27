@@ -3,6 +3,10 @@ package com.src.Characters;
 import com.src.Characters.Enemies.Enemy;
 import com.src.Weapons.WarriorSword;
 
+import java.security.SecureRandom;
+
+import static com.badlogic.gdx.math.MathUtils.random;
+
 public class Warrior extends Character implements CharacterMethods {
 
     public Warrior(){
@@ -37,7 +41,11 @@ public class Warrior extends Character implements CharacterMethods {
 
     @Override
     public void attack(Enemy enemy) {
-        enemy.setHealth(enemy.getHealth()-( strength/4+ mainHand.getDamage()));
+        SecureRandom random = new SecureRandom();
+        int strengthdmg = random.nextInt(strength+1);
+        int weapondmg = random.nextInt(mainHand.getDamage()-5)+5;
+
+        enemy.setHealth(enemy.getHealth()-( strengthdmg+ weapondmg));
     }
 
     @Override

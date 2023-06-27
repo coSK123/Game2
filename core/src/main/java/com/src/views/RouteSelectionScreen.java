@@ -35,7 +35,7 @@ public class RouteSelectionScreen implements Screen {
         this.game = game;
         this.player = player;
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 1800,1000);
+        camera.setToOrtho(false, 1200,840);
 
     }
 
@@ -54,7 +54,7 @@ public class RouteSelectionScreen implements Screen {
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 System.out.println("Created a Warrior");
                 RestLabel.setText("Press a Button");
-                game.setScreen(new Campfire());
+                game.setScreen(new Campfire( game,  player));
             }
 
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {

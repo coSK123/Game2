@@ -38,7 +38,7 @@ public class PlayerSelectionScreen implements Screen {
         this.game = game;
         warrior = new AnimatedDrawable();
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 1800,1000);
+        camera.setToOrtho(false, 1200,840);
 
     }
 
@@ -53,8 +53,8 @@ public class PlayerSelectionScreen implements Screen {
         warriorLabel = new Label("Warrior", crispy);
         ImageButton warriorButton = new ImageButton(warrior);
         warriorButton.setBackground(warrior);
-        warriorButton.setSize((float) Gdx.graphics.getWidth() /3 -50,Gdx.graphics.getHeight()-10);
-        warriorButton.setPosition( 35, 10);
+        warriorButton.setSize(320,160);
+        warriorButton.setPosition( -40, 300);
 
         warriorButton.addListener(new InputListener(){
             @Override
