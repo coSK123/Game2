@@ -20,6 +20,7 @@ import com.src.Animations.AnimatedDrawable;
 import com.src.Characters.Character;
 import com.src.Characters.Enemies.Enemy;
 import com.src.Characters.Enemies.Skeleton;
+import com.src.Items.HealthPotion;
 
 public class FightScreen implements Screen {
     final Game game;
@@ -79,6 +80,31 @@ public class FightScreen implements Screen {
             }
         });
         stage.addActor(attackButton);
+
+        TextButton item = new TextButton("Heal",crispy);
+        item.setSize((float) Gdx.graphics.getWidth() /3 -50,30);
+        item.setPosition( 90, 10);
+        item.addListener(new InputListener(){
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+
+                if(playermove){
+                    if(player.getItems().indexOf(new HealthPotion())>0) {
+                        HealthPotion heal = (HealthPotion) player.getItems().get(player.getItems().indexOf(new HealthPotion()));
+
+                        if (heal != null)
+                            heal.use(player);
+                    }
+                    playermove = false;
+                }
+            }
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button){
+
+                return true;
+            }
+        });
+        stage.addActor(item);
+
 
 
     }
